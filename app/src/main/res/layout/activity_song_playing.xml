@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,13 +16,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/playing_artist"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="16dp"
         tools:text="Song Name: Tum hi ho" />
 
     <TextView
+        android:layout_below="@id/playing_song"
         android:id="@+id/playing_artist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,54 +28,48 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/playing_song"
-        app:layout_constraintStart_toStartOf="@+id/playing_song"
-        app:layout_constraintTop_toBottomOf="@+id/playing_song"
         tools:text="Artist Name: Arijit Singh" />
 
     <View
+        android:layout_below="@id/playing_artist"
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playing_artist" />
+        android:layout_marginTop="40dp"
+        android:background="@android:color/darker_gray" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/playImageView"
+        android:layout_below="@id/view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/view"
         app:srcCompat="@drawable/ic_play_arrow_black_24dp" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/NextImageView"
+        android:layout_below="@id/view"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/playImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/view"
         app:srcCompat="@drawable/ic_skip_next_black_24dp" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/backImageView"
+        android:layout_below="@id/view"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toLeftOf="@id/playImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="11dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
         app:srcCompat="@drawable/ic_skip_previous_black_24dp" />
 
     <Button
+        android:layout_below="@id/playImageView"
+        android:layout_centerHorizontal="true"
         android:id="@+id/library_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -89,4 +81,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
