@@ -1,9 +1,12 @@
 package com.amanirshad.musicalstructure;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -12,6 +15,7 @@ public class SongListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Music Library");
         setContentView(R.layout.activity_song_list);
         ArrayList<Song> songArrayList = new ArrayList<Song>();
 
@@ -36,10 +40,19 @@ public class SongListActivity extends AppCompatActivity {
         songArrayList.add(new Song("Dil Mera Blast","Darshan Rava;"));
 
         SongAdapter songAdapter = new SongAdapter(this,songArrayList);
-        ListView songListView = (ListView) findViewById(R.id.song_list);
+        ListView songListView = findViewById(R.id.song_list);
         songListView.setAdapter(songAdapter);
 
-
+        songListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Song song = (Song) adapterView.getItemAtPosition(position);
+                Intent intent = new Intent(SongListActivity.this, SongPlayingActivity.class);
+                intent.putExtra("SONG_NAME", song.getSongName());
+                intent.putExtra("ARTIST_NAME", song.getArtistName());
+                startActivity(intent);
+            }
+        });
 
 
     }
